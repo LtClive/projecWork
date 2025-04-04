@@ -37,10 +37,10 @@
             }
 
             // Costruisci il nome del file PDF usando il nome dell'azienda
-            var fileName = nomeAzienda + "documento.pdf";
+            var fileName = nomeAzienda + "_documento.pdf";
             
             // Assicurati che il PDF esista nella cartella 'files'
-            var filePath = "res/files/" + fileName;
+            var filePath = "/res/files/";
 
             // Crea un link temporaneo per avviare il download
             var link = document.createElement("a");
@@ -56,12 +56,11 @@
     <header>
         <div class="container">
             <h1>Sviluppo di un software per la sicurezza aziendale</h1>
-            <p>Università Telematica Unipegaso</p>
             <img src="res/img/logo-unipegaso.png">
         </div>
     </header>
 
-    <main class="content">
+      <main class="content">
         <div class="col-2">
             <section class="introduction">
                 <h2>Introduzione</h2>
@@ -77,10 +76,11 @@
                 <input type="text" id="nome-azienda" name="nome-azienda" onkeyup="enableDownload()">
                 
                 <!-- Messaggio di "Loading..." -->
-                <span id="loading-text" style="display: none;">Caricamento...</span>
+                <span id="loading-text" style="display: none;">Loading...</span>
                 
-                <br>
-                <button id="download-btn" class="download-btn" onclick="downloadPDF()" disabled>Scarica il Documento</button>
+                <div class="center-button">
+                    <button id="download-btn" class="download-btn" onclick="downloadPDF()" disabled>Scarica il Documento</button>
+                </div>
             </section>
             <!-- link per google form -->
             <section class="google-form">
@@ -102,7 +102,7 @@
 
     <footer>
            <div class="container">
-        <p>&copy; 2025 Luca Tricarico Tutti i diritti riservati.</p>
+        <p>&copy; 2025 Luca Tricarico - Tutti i diritti riservati.</p>
         <ul>
             <li><a href="#privacy">Privacy</a></li>
             <li><a href="#terms">Termini e condizioni</a></li>
