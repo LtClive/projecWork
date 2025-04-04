@@ -16,18 +16,36 @@
     <meta property="og:url" content="URL_DELLA_PAGINA">
 
     <script>
-    function downloadPDF() {
-        var nomeAzienda = document.getElementById("nome-azienda").value.trim();
-        if (!nomeAzienda) {
-            alert("Inserisci il nome della tua azienda");
-            return;
+        function enableDownload() {
+            var nomeAzienda = document.getElementById("nome-azienda").value.trim();
+            var downloadBtn = document.getElementById("download-btn");
+            var loadingText = document.getElementById("loading-text");
+
+            if (nomeAzienda !== "") {
+                loadingText.style.display = "inline"; 
+                downloadBtn.setAttribute("disabled", "true");
+
+                setTimeout(function() {
+                    loadingText.style.display = "none"; 
+                    downloadBtn.removeAttribute("disabled"); 
+                }, 2000);
+            } else {
+                loadingText.style.display = "none";
+                downloadBtn.setAttribute("disabled", "true");
+            }
         }
 
-        var nomeDocumento = "documento"; // Nome fisso del documento
-        var filePath = "res/files/documento.pdf";  // Percorso originale del file
-        var fileName = nomeAzienda + "_" + nomeDocumento + ".pdf"; // Nome personalizzato
+        function downloadPDF() {
+            var nomeAzienda = document.getElementById("nome-azienda").value.trim();
+            if (!nomeAzienda) {
+                alert("Inserisci il nome della tua azienda");
+                return;
+        }
+        var nomeDocumento = "Documento_Informativo"; 
+        var filePath = "res/files/documento.pdf";  
+        var fileName = nomeAzienda + "_" + nomeDocumento + ".pdf"; 
 
-        fetch(filePath, { method: "HEAD" })
+            fetch(filePath, { method: "HEAD" })
             .then(response => {
                 if (!response.ok) throw new Error("File non trovato");
 
@@ -42,8 +60,7 @@
                 alert("Il file non è disponibile. Riprova più tardi.");
             });
     }
-</script>
-
+    </script>
 </head>
   
 <body class="body">
@@ -135,3 +152,4 @@
     </style>
 </body>
 </html>
+
