@@ -1,0 +1,115 @@
+<!DOCTYPE html> 
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment Aziendale</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function enableDownload() {
+            var nomeAzienda = document.getElementById("nome-azienda").value.trim();
+            var downloadBtn = document.getElementById("download-btn");
+            var loadingText = document.getElementById("loading-text");
+            
+            // Mostra "Loading..." quando l'utente inizia a scrivere
+            if (nomeAzienda !== "") {
+                loadingText.style.display = "inline"; 
+                downloadBtn.setAttribute("disabled", "true");
+                
+                // Simulazione ritardo di caricamento prima di attivare il download
+                setTimeout(function() {
+                    loadingText.style.display = "none"; 
+                    downloadBtn.removeAttribute("disabled"); 
+                }, 2000);
+            } else {
+                loadingText.style.display = "none";
+                downloadBtn.setAttribute("disabled", "true");
+            }
+        }
+
+        // Funzione per scaricare il PDF esistente rinominato
+        function downloadPDF() {
+            var nomeAzienda = document.getElementById("nome-azienda").value.trim();
+
+            if (!nomeAzienda) {
+                alert("Inserisci il nome della tua azienda");
+                return;
+            }
+
+            // Costruisci il nome del file PDF usando il nome dell'azienda
+            var fileName = nomeAzienda + "documento.pdf";
+            
+            // Assicurati che il PDF esista nella cartella 'files'
+            var filePath = "res/files/" + fileName;
+
+            // Crea un link temporaneo per avviare il download
+            var link = document.createElement("a");
+            link.href = filePath;
+            link.download = fileName;
+
+            // Avvia il download del file
+            link.click();
+        }
+    </script>
+</head>
+<body class="body">
+    <header>
+        <div class="container">
+            <h1>Sviluppo di un software per la sicurezza aziendale</h1>
+            <p>Università Telematica Unipegaso</p>
+            <img src="res/img/logo-unipegaso.png">
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="col-2">
+            <section class="introduction">
+                <h2>Introduzione</h2>
+                <p>Risk Assessment: cos’è e perché è così importante nella strategia aziendale. Il Risk assessment è un processo importante nella strategia di gestione del rischio di un'azienda: scopri le fasi, gli obiettivi e le figure professionali coinvolte.</p>
+                <h2>Che cos’è il risk assessment?</h2>
+                <p>La valutazione del rischio, meglio conosciuta come risk assessment, è l'identificazione dei pericoli che potrebbero avere un impatto negativo sulla capacità di un'organizzazione di condurre il proprio business. Queste valutazioni aiutano ad identificare i rischi aziendali reali e forniscono misure, processi e controlli per ridurre l'impatto di queste minacce sulle operazioni aziendali.</p>
+            </section>
+        </div>
+
+        <div class="col-2">
+            <section class="download">
+                <h2>Inserisci il nome della tua azienda per scaricare l'informativa</h2>
+                <input type="text" id="nome-azienda" name="nome-azienda" onkeyup="enableDownload()">
+                
+                <!-- Messaggio di "Loading..." -->
+                <span id="loading-text" style="display: none;">Caricamento...</span>
+                
+                <br>
+                <button id="download-btn" class="download-btn" onclick="downloadPDF()" disabled>Scarica il Documento</button>
+            </section>
+            <!-- link per google form -->
+            <section class="google-form">
+                <h2>Compila il Google Form</h2>
+                <a href="https://forms.gle/QTFNaUG1ViP7fc279" target="_blank" class="google-form-btn">Vai al Form</a>
+            </section>
+        </div>
+        
+        <section class="personal-info">
+            <div class="info">
+                <h2>Luca Tricarico</h2>
+                <p><strong>Matricola:</strong> 0312301666 </p>
+                <p><strong>Corso di Laurea:</strong> Laurea Triennale in Informatica per le aziende digitali L-31 </p>
+                <p><strong>Titolo Project Work:</strong> Risk Assessment Aziendale </p>
+                <p><strong>Anno Accademico:</strong> 2025 </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+           <div class="container">
+        <p>&copy; 2025 Luca Tricarico Tutti i diritti riservati.</p>
+        <ul>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#terms">Termini e condizioni</a></li>
+            <li><a href="https://it.linkedin.com/in/luca-tricarico-8180b1132" target="_blank">linkedin</a></li>
+        </ul>
+    </div>
+    </footer>
+</body>
+</html>
+
