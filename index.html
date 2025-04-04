@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +25,6 @@
             if (nomeAzienda !== "") {
                 loadingText.style.display = "inline"; 
                 downloadBtn.setAttribute("disabled", "true");
-
                 setTimeout(function() {
                     loadingText.style.display = "none"; 
                     downloadBtn.removeAttribute("disabled"); 
@@ -34,16 +34,14 @@
                 downloadBtn.setAttribute("disabled", "true");
             }
         }
-
         function downloadPDF() {
             var nomeAzienda = document.getElementById("nome-azienda").value.trim();
             if (!nomeAzienda) {
                 alert("Inserisci il nome della tua azienda");
                 return;
         }
-        var nomeDocumento = "Documento_Informativo"; 
         var filePath = "res/files/documento.pdf";  
-        var fileName = nomeAzienda + "_" + nomeDocumento + ".pdf"; 
+        var fileName = nomeAzienda + "_" + "documento"; 
 
             fetch(filePath, { method: "HEAD" })
             .then(response => {
