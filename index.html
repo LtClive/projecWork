@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risk Assessment Aziendale</title>
     <link rel="stylesheet" href="style.css">
-    
     <!-- Meta SEO -->
     <meta name="description" content="Scopri come migliorare la sicurezza aziendale con il risk assessment. Scarica il documento e compila il form per maggiori informazioni.">
-    
     <!-- Open Graph per Social Media -->
     <meta property="og:title" content="Risk Assessment Aziendale">
     <meta property="og:description" content="Scopri le migliori strategie di gestione del rischio aziendale.">
@@ -25,6 +23,7 @@
         if (nomeAzienda !== "") {
             loadingText.style.display = "inline"; 
             downloadBtn.setAttribute("disabled", "true");
+
             setTimeout(function() {
                 loadingText.style.display = "none"; 
                 downloadBtn.removeAttribute("disabled"); 
@@ -34,21 +33,31 @@
             downloadBtn.setAttribute("disabled", "true");
         }
     }
-    function downloadPDF() {
+    async function downloadPDF() {
         var nomeAzienda = document.getElementById("nome-azienda").value.trim();
         if (!nomeAzienda) {
             alert("Inserisci il nome della tua azienda");
             return;
         }
         var filePath = "res/files/documento.pdf";  
-        var fileName = nomeAzienda + "documento.pdf";
-        // Creazione di un link temporaneo per il download
-        var link = document.createElement("a");
-        link.href = filePath;
-        link.setAttribute("download", fileName); 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        var fileName = nomeAzienda + "_documento.pdf"; 
+        try {
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error("File non trovato");
+            const blob = await response.blob();
+            const blobURL = window.URL.createObjectURL(blob);
+            var link = document.createElement("a");
+            
+            link.href = blobURL;
+            link.download = fileName;  
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            // Pulizia memoria
+            window.URL.revokeObjectURL(blobURL);
+        } catch (error) {
+            alert("Il file non è disponibile. Riprova più tardi.");
+        }
     }
 </script>
 </head>
