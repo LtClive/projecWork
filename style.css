@@ -25,12 +25,10 @@ header {
     padding: 40px 0;
     text-align: center;
 }
-
 header .container {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 header img {
     max-width: 150px;
     margin-top: 20px;
@@ -57,14 +55,12 @@ header img {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
 }
-
 h2 {
     font-size: 1.8em;
     color: #2c3e50;
     margin-bottom: 20px;
     text-align: center;
 }
-
 p {
     font-size: 1.2em;
     color: #333;
@@ -89,7 +85,6 @@ p {
     border-radius: 6px;
     text-align: center;
 }
-
 #nome-azienda:focus {
     border-color: #3498db;
 }
@@ -125,6 +120,7 @@ p {
 .download-btn, .google-form-btn {
     display: inline-block;
 }
+
 /* Pulsante di download */
 .download-btn {
     display: inline-block;
@@ -145,6 +141,7 @@ p {
     background-color: #95a5a6;
     cursor: not-allowed;
 }
+
 /* Pulsante Google Form */
 .google-form-btn {
     display: inline-block;
@@ -157,10 +154,10 @@ p {
     transition: background-color 0.5s;
     text-align: center;
 }
-
 .google-form-btn:hover {
     background-color: #219150;
 }
+
 /* Footer */
 footer {
     background-color: #333; 
@@ -168,12 +165,14 @@ footer {
     padding: 20px 0; 
     text-align: center; 
 }
+
 /* Container per centrare il contenuto nel footer */
 footer .container {
     max-width: 1200px;  
     margin: 0 auto;  
     padding: 0 20px;  
 }
+
 /* Stili per il paragrafo del copyright */
 footer p {
     font-size: 14px;  
@@ -202,6 +201,7 @@ footer ul li a {
 footer ul li a:hover {
     color: #f39c12;  
 }
+
 /* Media Queries per schermi più piccoli */
 @media (max-width: 768px) {
     .content {
@@ -223,6 +223,7 @@ footer ul li a:hover {
         padding: 12px 25px;
     }
 }
+
 /* Focus per i pulsanti */
 .download-btn:focus, .google-form-btn:focus {
     outline: 3px solid #3498db;
