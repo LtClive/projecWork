@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,7 @@
                 downloadBtn.setAttribute("disabled", "true");
             }
         }
+        
         // Funzione per scaricare il PDF esistente rinominato
         function downloadPDF() {
             var nomeAzienda = document.getElementById("nome-azienda").value.trim();
@@ -33,18 +34,19 @@
             }
             // Costruisci il nome del file PDF usando il nome dell'azienda
             var fileName = nomeAzienda + "_documento.pdf";
-            // Assicurati che il PDF esista nella cartella 'files'
+            // Path del file
             var filePath = "res/files/documento.pdf";
+            
             // Crea un link temporaneo per avviare il download
             var link = document.createElement("a");
             link.href = filePath;
-            link.download = fileName;
+            link.download = fileName;  //Rinomina il file durante il download
             // Avvia il download del file
             link.click();
         }
     </script>
 </head>
-    
+  
 <body class="body">
     <header>
         <div class="container">
