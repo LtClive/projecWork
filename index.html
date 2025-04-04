@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risk Assessment Aziendale</title>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Scopri come migliorare la sicurezza aziendale con il risk assessment. Scarica il documento e compila il form per maggiori informazioni.">
+    
+    <!-- Open Graph per Social Media -->
+    <meta property="og:title" content="Risk Assessment Aziendale">
+    <meta property="og:description" content="Scopri le migliori strategie di gestione del rischio aziendale.">
+    <meta property="og:image" content="res/img/logo-unipegaso.png">
+    <meta property="og:url" content="URL_DELLA_PAGINA">
+
     <script>
         function enableDownload() {
             var nomeAzienda = document.getElementById("nome-azienda").value.trim();
             var downloadBtn = document.getElementById("download-btn");
             var loadingText = document.getElementById("loading-text");
-            // Mostra "Loading..." quando l'utente inizia a scrivere
+
             if (nomeAzienda !== "") {
                 loadingText.style.display = "inline"; 
                 downloadBtn.setAttribute("disabled", "true");
-                // Simulazione ritardo di caricamento prima di attivare il download
+
                 setTimeout(function() {
                     loadingText.style.display = "none"; 
                     downloadBtn.removeAttribute("disabled"); 
@@ -24,25 +34,28 @@
                 downloadBtn.setAttribute("disabled", "true");
             }
         }
-        
-        // Funzione per scaricare il PDF esistente rinominato
+
         function downloadPDF() {
             var nomeAzienda = document.getElementById("nome-azienda").value.trim();
             if (!nomeAzienda) {
                 alert("Inserisci il nome della tua azienda");
                 return;
             }
-            // Costruisci il nome del file PDF usando il nome dell'azienda
-            var fileName = nomeAzienda + "_documento.pdf";
-            // Path del file
+
             var filePath = "res/files/documento.pdf";
-            
-            // Crea un link temporaneo per avviare il download
-            var link = document.createElement("a");
-            link.href = filePath;
-            link.download = fileName;  //Rinomina il file durante il download
-            // Avvia il download del file
-            link.click();
+            fetch(filePath, { method: "HEAD" })
+                .then(response => {
+                    if (!response.ok) throw new Error("File non trovato");
+                    var link = document.createElement("a");
+                    link.href = filePath;
+                    link.download = nomeAzienda + "_documento.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                })
+                .catch(error => {
+                    alert("Il file non è disponibile. Riprova più tardi.");
+                });
         }
     </script>
 </head>
@@ -51,11 +64,11 @@
     <header>
         <div class="container">
             <h1>Sviluppo di un software per la sicurezza aziendale</h1>
-            <img src="res/img/logo-unipegaso.png">
+            <img src="res/img/logo-unipegaso.png" alt="Logo Unipegaso">
         </div>
     </header>
-      <!-- introduzione pagina web -->
-      <main class="content">
+
+    <main class="content">
         <div class="col-2">
             <section class="introduction">
                 <h2>Introduzione</h2>
@@ -64,18 +77,17 @@
                 <p>La valutazione del rischio, meglio conosciuta come risk assessment, è l'identificazione dei pericoli che potrebbero avere un impatto negativo sulla capacità di un'organizzazione di condurre il proprio business. Queste valutazioni aiutano ad identificare i rischi aziendali reali e forniscono misure, processi e controlli per ridurre l'impatto di queste minacce sulle operazioni aziendali.</p>
             </section>
         </div>
-       
+
         <div class="col-2">
             <section class="download">
                 <h2>Inserisci il nome della tua azienda per scaricare l'informativa</h2>
                 <input type="text" id="nome-azienda" name="nome-azienda" onkeyup="enableDownload()">
-                <!-- Messaggio di "Loading..." -->
-                <span id="loading-text" style="display: none;">Loading...</span>
+                <span id="loading-text" style="display: none;" aria-live="polite">Loading...</span>
                 <div class="center-button">
                     <button id="download-btn" class="download-btn" onclick="downloadPDF()" disabled>Scarica il Documento</button>
                 </div>
             </section>
-            <!-- link per google form -->
+
             <section class="google-form">
                 <h2>Compila il Google Form</h2>
                 <a href="https://forms.gle/QTFNaUG1ViP7fc279" target="_blank" class="google-form-btn">Vai al Form</a>
@@ -94,37 +106,47 @@
     </main>
 
    <footer>
-    <div class="container">
-        <p>&copy; 2025 Luca Tricarico - Tutti i diritti riservati.</p>
-        <ul>
-            <li><a href="#" id="privacy">Privacy</a></li>
-            <li><a href="#" id="terms">Termini e condizioni</a></li>
-            <li><a href="https://it.linkedin.com/in/luca-tricarico-8180b1132" target="_blank">linkedin</a></li>
-        </ul>
-    </div>
+        <div class="container">
+            <p>&copy; 2025 Luca Tricarico - Tutti i diritti riservati.</p>
+            <ul>
+                <li><a href="#" id="privacy">Privacy</a></li>
+                <li><a href="#" id="terms">Termini e condizioni</a></li>
+                <li><a href="https://it.linkedin.com/in/luca-tricarico-8180b1132" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
    </footer>
 
-   <!-- Pulsante "Back to Top" -->
    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" id="back-to-top-btn">Back to Top</button>
-    
-    <!-- Script per il pulsante "Back to Top" -->
+
     <script>
-        // Ottieni il pulsante "Back to Top"
         var backToTopBtn = document.getElementById("back-to-top-btn");
 
-        // Quando l'utente scorre verso il basso 20px dalla parte superiore della pagina, mostra il pulsante
         window.onscroll = function() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                backToTopBtn.style.display = "inline-block"; // Mostra il pulsante
+                backToTopBtn.style.display = "inline-block"; 
             } else {
-                backToTopBtn.style.display = "none"; // Nascondi il pulsante
+                backToTopBtn.style.display = "none"; 
             }
         };
-
-        // Quando l'utente clicca sul pulsante, scrolla la pagina in cima
-        backToTopBtn.onclick = function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
     </script>
+
+    <style>
+        #back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            transition: 0.3s;
+        }
+        #back-to-top-btn:hover {
+            background: #0056b3;
+        }
+    </style>
 </body>
 </html>
