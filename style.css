@@ -46,6 +46,7 @@ header img {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px; 
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Sezioni */
@@ -66,7 +67,7 @@ h2 {
 
 p {
     font-size: 1.2em;
-    color: #555;
+    color: #333;
     margin-bottom: 15px;
 }
 
@@ -245,6 +246,7 @@ footer ul li a:hover {
     font-size: 16px; 
     display: none; 
     z-index: 1000; 
+    transition: opacity 0.3s, transform 0.3s;
 }
 
 /* Hover - quando si passa sopra il pulsante */
