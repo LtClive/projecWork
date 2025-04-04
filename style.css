@@ -116,7 +116,14 @@ p {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
+/* Centrare i pulsanti */
+.center-button {
+    text-align: center;
+    margin-top: 20px;
+}
+.download-btn, .google-form-btn {
+    display: inline-block;
+}
 /* Pulsante di download */
 .download-btn {
     display: inline-block;
@@ -130,16 +137,13 @@ p {
     transition: background-color 0.5s;
     cursor: pointer;
 }
-
 .download-btn:hover {
     background-color: #2980b9;
 }
-
 .download-btn:disabled {
     background-color: #95a5a6;
     cursor: not-allowed;
 }
-
 /* Pulsante Google Form */
 .google-form-btn {
     display: inline-block;
@@ -156,7 +160,6 @@ p {
 .google-form-btn:hover {
     background-color: #219150;
 }
-
 /* Footer */
 footer {
     background-color: #333; 
@@ -164,20 +167,17 @@ footer {
     padding: 20px 0; 
     text-align: center; 
 }
-
 /* Container per centrare il contenuto nel footer */
 footer .container {
     max-width: 1200px;  
     margin: 0 auto;  
     padding: 0 20px;  
 }
-
 /* Stili per il paragrafo del copyright */
 footer p {
     font-size: 14px;  
     margin: 10px 0;  
 }
-
 /* Stili per lista di link nel footer */
 footer ul {
     list-style: none;  
@@ -186,12 +186,10 @@ footer ul {
     display: flex;  
     justify-content: center; 
 }
-
 /* Stili per elementi della lista */
 footer ul li {
     margin: 0 15px; 
 }
-
 /* Stili per i link */
 footer ul li a {
     text-decoration: none;  
@@ -199,12 +197,10 @@ footer ul li a {
     font-size: 16px;  
     transition: color 0.3s;  
 }
-
 /* Cambia colore del link al passaggio del mouse */
 footer ul li a:hover {
     color: #f39c12;  
 }
-
 /* Media Queries per schermi più piccoli */
 @media (max-width: 768px) {
     .content {
@@ -226,7 +222,6 @@ footer ul li a:hover {
         padding: 12px 25px;
     }
 }
-
 /* Focus per i pulsanti */
 .download-btn:focus, .google-form-btn:focus {
     outline: 3px solid #3498db;
@@ -248,7 +243,6 @@ footer ul li a:hover {
     z-index: 1000; 
     transition: opacity 0.3s, transform 0.3s;
 }
-
 /* Hover - quando si passa sopra il pulsante */
 #back-to-top-btn:hover {
     background-color: #0056b3; 
