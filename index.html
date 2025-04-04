@@ -39,7 +39,6 @@
             return;
         }
         var filePath = "res/files/documento.pdf";  
-        var fileName = nomeAzienda + "documento.pdf"; 
         // Creazione di un link temporaneo per il download
         var link = document.createElement("a");
         link.href = filePath;
@@ -78,10 +77,11 @@
                     <button id="download-btn" class="download-btn" onclick="downloadPDF()" disabled>Scarica il Documento</button>
                 </div>
             </section>
-
             <section class="google-form">
                 <h2>Compila il Google Form</h2>
-                <a href="https://forms.gle/QTFNaUG1ViP7fc279" target="_blank" class="google-form-btn">Vai al Form</a>
+                <div class="center-button">
+                    <a href="https://forms.gle/QTFNaUG1ViP7fc279" target="_blank" class="google-form-btn">Vai al Form</a>
+                </div>
             </section>
         </div>
           
@@ -96,7 +96,7 @@
         </section>
     </main>
 
-   <footer>
+    <footer>
         <div class="container">
             <p>&copy; 2025 Luca Tricarico - Tutti i diritti riservati.</p>
             <ul>
@@ -105,7 +105,7 @@
                 <li><a href="https://it.linkedin.com/in/luca-tricarico-8180b1132" target="_blank">LinkedIn</a></li>
             </ul>
         </div>
-   </footer>
+    </footer>
 
    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" id="back-to-top-btn">Back to Top</button>
 
