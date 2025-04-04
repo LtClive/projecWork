@@ -112,16 +112,6 @@ p {
     100% { transform: rotate(360deg); }
 }
 
-/* Centrare il pulsante */
-.center-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-.download-btn, .google-form-btn {
-    display: inline-block;
-}
-
 /* Pulsante di download */
 .download-btn {
     display: inline-block;
@@ -144,23 +134,28 @@ p {
 }
 
 /* Pulsante Google Form */
-.google-form-btn {
-    display: inline-block;
+.center-button {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    width: 100%;            
+    margin-top: 20px;       
+}
+.google-form-btn, .download-btn {
     padding: 14px 30px;
     font-size: 1.2em;
-    background-color: #8e44ad; 
+    background-color: #8e44ad;
     color: white;
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.5s;
     text-align: center;
+    cursor: pointer;
 }
 
-/* Cambio colore  */
-.google-form-btn:hover {
+.google-form-btn:hover, .download-btn:hover {
     background-color: #732d91;
-}
-
+{
 /* Footer */
 footer {
     background-color: #333; 
@@ -231,7 +226,9 @@ footer ul li a:hover {
 .download-btn:focus, .google-form-btn:focus {
     outline: 3px solid #3498db;
     outline-offset: 2px;
+    background-color: #2980b9;  
 }
+    
 /* Pulsante di BackToTop */
 #back-to-top-btn {
     position: fixed;
