@@ -10,12 +10,10 @@
             var nomeAzienda = document.getElementById("nome-azienda").value.trim();
             var downloadBtn = document.getElementById("download-btn");
             var loadingText = document.getElementById("loading-text");
-            
             // Mostra "Loading..." quando l'utente inizia a scrivere
             if (nomeAzienda !== "") {
                 loadingText.style.display = "inline"; 
                 downloadBtn.setAttribute("disabled", "true");
-                
                 // Simulazione ritardo di caricamento prima di attivare il download
                 setTimeout(function() {
                     loadingText.style.display = "none"; 
@@ -26,32 +24,27 @@
                 downloadBtn.setAttribute("disabled", "true");
             }
         }
-
         // Funzione per scaricare il PDF esistente rinominato
         function downloadPDF() {
             var nomeAzienda = document.getElementById("nome-azienda").value.trim();
-
             if (!nomeAzienda) {
                 alert("Inserisci il nome della tua azienda");
                 return;
             }
-
             // Costruisci il nome del file PDF usando il nome dell'azienda
             var fileName = nomeAzienda + "_documento.pdf";
-            
             // Assicurati che il PDF esista nella cartella 'files'
-            var filePath = "/res/files/documento.pdf";
-
+            var filePath = "res/files/documento.pdf";
             // Crea un link temporaneo per avviare il download
             var link = document.createElement("a");
             link.href = filePath;
             link.download = fileName;
-
             // Avvia il download del file
             link.click();
         }
     </script>
 </head>
+    
 <body class="body">
     <header>
         <div class="container">
