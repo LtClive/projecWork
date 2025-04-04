@@ -158,19 +158,11 @@ p {
     background-color: #732d91;
 {
     
-/* Footer */
 footer {
-    background-color: #333; 
+    background-color: #222;  /* Sfondo scuro */
     color: white;  
-    padding: 20px 0; 
-    text-align: center; 
-}
-
-/* Container per centrare il contenuto nel footer */
-footer .container {
-    max-width: 1200px;  
-    margin: 0 auto;  
-    padding: 0 20px;  
+    text-align: center;  
+    padding: 20px 0;  
 }
 
 /* Stili per il paragrafo del copyright */
@@ -178,18 +170,23 @@ footer p {
     font-size: 14px;  
     margin: 10px 0;  
 }
-/* Stili per lista di link nel footer */
+
+/* Stili per la lista di link nel footer */
 footer ul {
     list-style: none;  
     padding: 0;  
     margin: 10px 0;  
     display: flex;  
-    justify-content: center; 
+    justify-content: center;  
+    align-items: center;  /
+    gap: 20px; 
 }
-/* Stili per elementi della lista */
+
+/* Stili per gli elementi della lista */
 footer ul li {
-    margin: 0 15px; 
+    display: inline-block;  
 }
+
 /* Stili per i link */
 footer ul li a {
     text-decoration: none;  
@@ -197,6 +194,7 @@ footer ul li a {
     font-size: 16px;  
     transition: color 0.3s;  
 }
+
 /* Cambia colore del link al passaggio del mouse */
 footer ul li a:hover {
     color: #f39c12;  
