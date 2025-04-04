@@ -174,10 +174,10 @@ footer .container {
 /* Stili per il paragrafo del copyright */
 footer p {
     font-size: 14px;  
-    margin: 10px 0;  /
+    margin: 10px 0;  
 }
 
-/* Stili per la lista di link nel footer */
+/* Stili per lista di link nel footer */
 footer ul {
     list-style: none;  
     padding: 0;  
@@ -186,7 +186,7 @@ footer ul {
     justify-content: center; 
 }
 
-/* Stili per ogni elemento della lista */
+/* Stili per elementi della lista */
 footer ul li {
     margin: 0 15px; 
 }
@@ -210,7 +210,6 @@ footer ul li a:hover {
         flex-direction: column;
         gap: 20px;
     }
-
     .col-2 {
         width: 100%;
     }
