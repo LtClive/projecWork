@@ -213,6 +213,17 @@ footer ul li a:hover {
     .col-2 {
         width: 100%;
     }
+    h2 {
+        font-size: 1.5em;  
+    }
+    .download-btn {
+        font-size: 1.1em;  
+        padding: 12px 30px;
+    }
+    .google-form-btn {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
 }
 
 /* Focus per i pulsanti */
