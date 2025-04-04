@@ -42,7 +42,7 @@
         // Creazione di un link temporaneo per il download
         var link = document.createElement("a");
         link.href = filePath;
-        link.setAttribute("download", fileName); 
+        link.setAttribute("download","documento.pdf"); 
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
