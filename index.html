@@ -52,12 +52,12 @@
             <img src="res/img/logo-unipegaso.png">
         </div>
     </header>
-            <!-- introduzione pagina web -->
+      <!-- introduzione pagina web -->
       <main class="content">
         <div class="col-2">
             <section class="introduction">
                 <h2>Introduzione</h2>
-                <p>Risk Assessment: cos’è e perché è così importante nella strategia aziendale. Il Risk assessment è un processo importante nella strategia di gestione del rischio di un'azienda: scopri le fasi, gli obiettivi e le figure professionali coinvolte.</p>
+                <p>Il Risk Assessment: cos’è e perché è così importante nella strategia aziendale. Il Risk assessment è un processo importante nella strategia di gestione del rischio di un'azienda: scopri le fasi, gli obiettivi e le figure professionali coinvolte.</p>
                 <h2>Che cos’è il risk assessment?</h2>
                 <p>La valutazione del rischio, meglio conosciuta come risk assessment, è l'identificazione dei pericoli che potrebbero avere un impatto negativo sulla capacità di un'organizzazione di condurre il proprio business. Queste valutazioni aiutano ad identificare i rischi aziendali reali e forniscono misure, processi e controlli per ridurre l'impatto di queste minacce sulle operazioni aziendali.</p>
             </section>
@@ -67,10 +67,8 @@
             <section class="download">
                 <h2>Inserisci il nome della tua azienda per scaricare l'informativa</h2>
                 <input type="text" id="nome-azienda" name="nome-azienda" onkeyup="enableDownload()">
-                
                 <!-- Messaggio di "Loading..." -->
                 <span id="loading-text" style="display: none;">Loading...</span>
-                
                 <div class="center-button">
                     <button id="download-btn" class="download-btn" onclick="downloadPDF()" disabled>Scarica il Documento</button>
                 </div>
@@ -104,8 +102,27 @@
     </div>
    </footer>
 
-      <!-- Pulsante "Back to Top" -->
+   <!-- Pulsante "Back to Top" -->
    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" id="back-to-top-btn">Back to Top</button>
     
+    <!-- Script per il pulsante "Back to Top" -->
+    <script>
+        // Ottieni il pulsante "Back to Top"
+        var backToTopBtn = document.getElementById("back-to-top-btn");
+
+        // Quando l'utente scorre verso il basso 20px dalla parte superiore della pagina, mostra il pulsante
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = "inline-block"; // Mostra il pulsante
+            } else {
+                backToTopBtn.style.display = "none"; // Nascondi il pulsante
+            }
+        };
+
+        // Quando l'utente clicca sul pulsante, scrolla la pagina in cima
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
 </body>
 </html>
