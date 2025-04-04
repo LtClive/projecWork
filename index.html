@@ -16,48 +16,34 @@
     <meta property="og:url" content="URL_DELLA_PAGINA">
 
     <script>
-        function enableDownload() {
-            var nomeAzienda = document.getElementById("nome-azienda").value.trim();
-            var downloadBtn = document.getElementById("download-btn");
-            var loadingText = document.getElementById("loading-text");
-
-            if (nomeAzienda !== "") {
-                loadingText.style.display = "inline"; 
-                downloadBtn.setAttribute("disabled", "true");
-
-                setTimeout(function() {
-                    loadingText.style.display = "none"; 
-                    downloadBtn.removeAttribute("disabled"); 
-                }, 2000);
-            } else {
-                loadingText.style.display = "none";
-                downloadBtn.setAttribute("disabled", "true");
-            }
+    function downloadPDF() {
+        var nomeAzienda = document.getElementById("nome-azienda").value.trim();
+        if (!nomeAzienda) {
+            alert("Inserisci il nome della tua azienda");
+            return;
         }
 
-        function downloadPDF() {
-            var nomeAzienda = document.getElementById("nome-azienda").value.trim();
-            if (!nomeAzienda) {
-                alert("Inserisci il nome della tua azienda");
-                return;
-            }
+        var nomeDocumento = "documento"; // Nome fisso del documento
+        var filePath = "res/files/documento.pdf";  // Percorso originale del file
+        var fileName = nomeAzienda + "_" + nomeDocumento + ".pdf"; // Nome personalizzato
 
-            var filePath = "res/files/documento.pdf";
-            fetch(filePath, { method: "HEAD" })
-                .then(response => {
-                    if (!response.ok) throw new Error("File non trovato");
-                    var link = document.createElement("a");
-                    link.href = filePath;
-                    link.download = nomeAzienda + "_documento.pdf";
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                })
-                .catch(error => {
-                    alert("Il file non è disponibile. Riprova più tardi.");
-                });
-        }
-    </script>
+        fetch(filePath, { method: "HEAD" })
+            .then(response => {
+                if (!response.ok) throw new Error("File non trovato");
+
+                var link = document.createElement("a");
+                link.href = filePath;
+                link.download = fileName; // Rinomina il file al momento del download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                alert("Il file non è disponibile. Riprova più tardi.");
+            });
+    }
+</script>
+
 </head>
   
 <body class="body">
@@ -120,7 +106,6 @@
 
     <script>
         var backToTopBtn = document.getElementById("back-to-top-btn");
-
         window.onscroll = function() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 backToTopBtn.style.display = "inline-block"; 
