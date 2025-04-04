@@ -14,7 +14,7 @@
     <meta property="og:image" content="res/img/logo-unipegaso.png">
     <meta property="og:url" content="URL_DELLA_PAGINA">
 
-    <script>
+   <script>
     function enableDownload() {
         var nomeAzienda = document.getElementById("nome-azienda").value.trim();
         var downloadBtn = document.getElementById("download-btn");
@@ -23,7 +23,6 @@
         if (nomeAzienda !== "") {
             loadingText.style.display = "inline"; 
             downloadBtn.setAttribute("disabled", "true");
-
             setTimeout(function() {
                 loadingText.style.display = "none"; 
                 downloadBtn.removeAttribute("disabled"); 
@@ -33,31 +32,21 @@
             downloadBtn.setAttribute("disabled", "true");
         }
     }
-    async function downloadPDF() {
+    function downloadPDF() {
         var nomeAzienda = document.getElementById("nome-azienda").value.trim();
         if (!nomeAzienda) {
             alert("Inserisci il nome della tua azienda");
             return;
         }
         var filePath = "res/files/documento.pdf";  
-        var fileName = nomeAzienda + "_documento.pdf"; 
-        try {
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error("File non trovato");
-            const blob = await response.blob();
-            const blobURL = window.URL.createObjectURL(blob);
-            var link = document.createElement("a");
-            
-            link.href = blobURL;
-            link.download = fileName;  
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            // Pulizia memoria
-            window.URL.revokeObjectURL(blobURL);
-        } catch (error) {
-            alert("Il file non è disponibile. Riprova più tardi.");
-        }
+        var fileName = nomeAzienda + "documento.pdf"; 
+        // Creazione di un link temporaneo per il download
+        var link = document.createElement("a");
+        link.href = filePath;
+        link.setAttribute("download", fileName); 
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 </script>
 </head>
